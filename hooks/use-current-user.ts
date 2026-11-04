@@ -1,20 +1,25 @@
 "use client";
 
+import { authClient } from "@/lib/auth-client";
+
 export interface CurrentUser {
   name: string;
   email: string;
   image?: string | null;
 }
 
-// TEMPORARY STUB. Replaced by Better Auth's useSession() in the auth step.
 export function useCurrentUser() {
-  const user = null as CurrentUser | null;
-  // To preview the logged-in navbar, comment the line above and use this one:
-  // const user: CurrentUser | null = { name: "Demo User", email: "demo@example.com", image: null };
+  const { data, isPending } = authClient.useSession();
+
+  const user: CurrentUser | null = data?.user
+    ? { name: data.user.name, email: data.user.email, image: data.user.image }
+    : null;
 
   return {
     user,
-    isPending: false,
-    logout: async () => {},
+    isPending,
+    logout: async () => {
+      await authClient.signOut();
+    },
   };
 }
