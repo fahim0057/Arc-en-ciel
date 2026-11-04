@@ -7,6 +7,8 @@ import { SITE } from "@/lib/site";
 import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/footer";
 import { AuthToast } from "@/components/auth/auth-toast";
+import { Suspense } from "react";
+import { NavbarFallback } from "@/components/navbar-fallback";
 
 const geistSans = Geist({ variable: "--font-geist-sans", subsets: ["latin"] });
 const geistMono = Geist_Mono({ variable: "--font-geist-mono", subsets: ["latin"] });
@@ -21,11 +23,13 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en" suppressHydrationWarning>
       <body className={`${geistSans.variable} ${geistMono.variable} min-h-screen antialiased`}>
 <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
-  <Navbar />
+  <Suspense fallback={<NavbarFallback />}>
+    <Navbar />
+  </Suspense>
   <main>{children}</main>
   <Footer />
-<Toaster richColors position="top-center" />
-<AuthToast />
+  <Toaster richColors position="top-center" />
+  <AuthToast />
 </ThemeProvider>
       </body>
     </html>

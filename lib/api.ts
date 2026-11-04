@@ -21,4 +21,13 @@ export async function getUpcomingEvents(query: EventQuery = {}): Promise<Communi
   const res = await fetch(url, { cache: "no-store" });
   if (!res.ok) throw new Error(`API responded ${res.status} for ${url}`);
   return res.json();
+
+}
+
+/** Public: one event, or null when it doesn't exist. */
+export async function getEventById(id: string): Promise<CommunityEvent | null> {
+  const res = await fetch(`${API_URL}/events/${id}`, { cache: "no-store" });
+  if (res.status === 404 || res.status === 400) return null;
+  if (!res.ok) throw new Error(`API responded ${res.status} for event ${id}`);
+  return res.json();
 }
