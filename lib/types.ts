@@ -11,4 +11,5 @@ export interface CommunityEvent {
   createdAt: string;
   participantCount?: number;
   hasPassed?: boolean;
+  joinedAt?: string;
 }

@@ -17,7 +17,12 @@ export function EventCard({ event }: { event: CommunityEvent }) {
           loading="lazy"
           className="aspect-video w-full object-cover"
         />
-        <Badge className="absolute left-3 top-3">{event.eventType}</Badge>
+      <Badge className="absolute left-3 top-3">{event.eventType}</Badge>
+            {event.hasPassed && (
+         <Badge variant="secondary" className="absolute right-3 top-3">
+                     Ended
+        </Badge>
+                                        )}
       </div>
 
       <CardContent className="flex flex-1 flex-col gap-3 p-5">

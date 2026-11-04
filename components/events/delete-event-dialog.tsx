@@ -62,7 +62,8 @@ export function DeleteEventDialog({
           <AlertDialogTitle>Delete this event?</AlertDialogTitle>
           <AlertDialogDescription>
             &ldquo;{event.title}&rdquo; will be removed permanently
-            {count > 0 && `, along with the ${count} ${count === 1 ? "person who has" : "people who have"} joined it`}
+            {count > 0 &&
+              `, along with the ${count} ${count === 1 ? "person who has" : "people who have"} joined it`}
             . This cannot be undone.
           </AlertDialogDescription>
         </AlertDialogHeader>
