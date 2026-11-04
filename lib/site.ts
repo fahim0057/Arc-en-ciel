@@ -22,4 +22,4 @@ export const EVENT_TYPES = [
   "Health Camp",
   "Education",
   "Other",
-];
+] as const;

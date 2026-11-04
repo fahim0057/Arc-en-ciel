@@ -3,10 +3,12 @@ import { API_URL } from "./api";
 
 export class ApiError extends Error {
   status: number;
+  fieldErrors?: Record<string, string[]>;
 
-  constructor(message: string, status: number) {
+  constructor(message: string, status: number, fieldErrors?: Record<string, string[]>) {
     super(message);
     this.status = status;
+    this.fieldErrors = fieldErrors;
   }
 }
 
@@ -27,7 +29,7 @@ export async function authFetch<T>(path: string, init: RequestInit = {}): Promis
 
   const body = await res.json().catch(() => null);
   if (!res.ok) {
-    throw new ApiError(body?.message ?? "Something went wrong.", res.status);
+    throw new ApiError(body?.message ?? "Something went wrong.", res.status, body?.errors);
   }
   return body as T;
 }

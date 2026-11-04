@@ -9,6 +9,6 @@ export interface CommunityEvent {
   creatorEmail: string;
   creatorName: string;
   createdAt: string;
-    participantCount?: number;
+  participantCount?: number;
   hasPassed?: boolean;
 }
