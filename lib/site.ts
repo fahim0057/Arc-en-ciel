@@ -6,6 +6,7 @@ export const SITE = {
   email: "hello@arcenciel.example",
   phone: "+880 1700-000000",
   address: "Dhaka, Bangladesh",
+  year: 2026,
 };
 
 export const NAV_LINKS = [

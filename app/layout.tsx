@@ -5,6 +5,7 @@ import { ThemeProvider } from "../components/ui/theme-provider";
 import { Toaster } from "@/components/ui/sonner";
 import { SITE } from "@/lib/site";
 import { Navbar } from "@/components/navbar";
+import { Footer } from "@/components/footer";
 
 const geistSans = Geist({ variable: "--font-geist-sans", subsets: ["latin"] });
 const geistMono = Geist_Mono({ variable: "--font-geist-mono", subsets: ["latin"] });
@@ -21,7 +22,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
   <Navbar />
   <main>{children}</main>
-  {/* Footer goes here in Step 10 */}
+  <Footer />
   <Toaster richColors position="top-center" />
 </ThemeProvider>
       </body>
