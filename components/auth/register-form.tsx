@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
-import { useForm, type FieldErrors } from "react-hook-form";
+import { useForm, useWatch, type FieldErrors } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Check, Eye, EyeOff, Loader2, X } from "lucide-react";
 import { toast } from "sonner";
@@ -18,17 +18,17 @@ export function RegisterForm() {
   const router = useRouter();
   const [showPassword, setShowPassword] = useState(false);
 
-  const {
+   const {
     register,
     handleSubmit,
-    watch,
+    control,
     formState: { errors, isSubmitting },
   } = useForm<RegisterValues>({
     resolver: zodResolver(registerSchema),
     defaultValues: { name: "", email: "", photoURL: "", password: "" },
   });
 
-  const password = watch("password") ?? "";
+  const password = useWatch({ control, name: "password" }) ?? "";
   const rules = [
     { label: "At least 6 characters", ok: password.length >= 6 },
     { label: "One uppercase letter", ok: /[A-Z]/.test(password) },

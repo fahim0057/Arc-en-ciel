@@ -9,9 +9,15 @@ export const auth = betterAuth({
 
   emailAndPassword: {
     enabled: true,
-    minPasswordLength: 6, // the brief says at least 6 characters
+    minPasswordLength: 6,
   },
 
-  // nextCookies() must be the last plugin in the list
+  socialProviders: {
+    google: {
+      clientId: process.env.GOOGLE_CLIENT_ID as string,
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET as string,
+    },
+  },
+
   plugins: [jwt(), nextCookies()],
 });

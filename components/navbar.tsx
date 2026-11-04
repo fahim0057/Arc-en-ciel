@@ -83,7 +83,7 @@ export function Navbar() {
                       <DropdownMenuTrigger asChild>
                         <button className="rounded-full outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2">
                           <Avatar className="h-9 w-9">
-                            <AvatarImage src={user.image ?? undefined} alt={user.name} />
+                            <AvatarImage src={user.image ?? undefined} alt={user.name} referrerPolicy="no-referrer" />
                             <AvatarFallback>{initials(user.name)}</AvatarFallback>
                           </Avatar>
                         </button>
