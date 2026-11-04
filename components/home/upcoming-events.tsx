@@ -11,7 +11,7 @@ async function EventsGrid() {
   // Only the fetch goes inside try/catch
   let events: CommunityEvent[] | null = null;
   try {
-    events = await getUpcomingEvents(6);
+        events = await getUpcomingEvents({ limit: 6 });
   } catch {
     events = null;
   }

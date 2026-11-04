@@ -13,3 +13,13 @@ export const NAV_LINKS = [
   { href: "/", label: "Home" },
   { href: "/events", label: "Upcoming Events" },
 ];
+
+export const EVENT_TYPES = [
+  "Cleanup",
+  "Plantation",
+  "Donation",
+  "Food Distribution",
+  "Health Camp",
+  "Education",
+  "Other",
+];

@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { useState } from "react";
 import { useForm, useWatch, type FieldErrors } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -13,9 +13,12 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { authClient } from "@/lib/auth-client";
 import { registerSchema, type RegisterValues } from "@/lib/validations/auth";
+import { safeRedirect } from "@/lib/redirect";
 
 export function RegisterForm() {
   const router = useRouter();
+    const searchParams = useSearchParams();
+  const redirectTo = safeRedirect(searchParams.get("redirect"));
   const [showPassword, setShowPassword] = useState(false);
 
    const {
@@ -49,7 +52,7 @@ export function RegisterForm() {
     }
 
     toast.success("Account created! Welcome aboard.");
-    router.push("/");
+    router.push(redirectTo);
     router.refresh();
   }
 
@@ -131,7 +134,12 @@ export function RegisterForm() {
 
         <p className="mt-6 text-center text-sm text-muted-foreground">
           Already have an account?{" "}
-          <Link href="/login" className="font-medium text-primary hover:underline">
+          <Link
+            href={
+              redirectTo === "/" ? "/login" : `/login?redirect=${encodeURIComponent(redirectTo)}`
+            }
+            className="font-medium text-primary hover:underline"
+          >
             Login
           </Link>
         </p>
