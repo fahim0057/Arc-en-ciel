@@ -1,11 +1,10 @@
-import { ThemeToggle } from "@/components/ui/theme-toggle";
-import { Button } from "@/components/ui/button";
 
+import { Hero } from "@/components/home/hero";
 export default function HomePage() {
   return (
-    <div className="flex items-center gap-4 p-10">
-      <Button>Primary button</Button>
-      <ThemeToggle />
-    </div>
+    <>
+      <Hero />
+      {/* Features, events, gallery and newsletter go here in the next steps */}
+    </>
   );
 }
