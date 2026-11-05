@@ -16,5 +16,10 @@ export function proxy(request: NextRequest) {
 
 // Only run on the private pages
 export const config = {
-  matcher: ["/create-event/:path*", "/manage-events/:path*", "/joined-events/:path*"],
+  matcher: [
+    "/create-event/:path*",
+    "/manage-events/:path*",
+    "/joined-events/:path*",
+    "/profile/:path*",
+  ],
 };

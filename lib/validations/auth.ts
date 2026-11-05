@@ -19,3 +19,10 @@ export const loginSchema = z.object({
 });
 
 export type LoginValues = z.infer<typeof loginSchema>;
+
+export const profileSchema = z.object({
+  name: z.string().trim().min(2, "Name must be at least 2 characters"),
+  photoURL: z.url("Enter a valid photo URL (starting with https://)"),
+});
+
+export type ProfileValues = z.infer<typeof profileSchema>;

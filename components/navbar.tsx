@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { useState } from "react";
-import { CalendarCheck, HeartHandshake, ListChecks, LogOut, Menu, PlusCircle, X } from "lucide-react";
+import { CalendarCheck, HeartHandshake, ListChecks, LogOut, Menu, PlusCircle, UserCircle, X } from "lucide-react";
 import { toast } from "sonner";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
@@ -99,6 +99,9 @@ export function Navbar() {
                     <p className="truncate text-xs text-muted-foreground">{user.email}</p>
                   </DropdownMenuLabel>
                   <DropdownMenuSeparator />
+                  <DropdownMenuItem asChild>
+                         <Link href="/profile"><UserCircle className="mr-2 h-4 w-4" />My Profile</Link>
+                  </DropdownMenuItem>
                   <DropdownMenuItem asChild>
                     <Link href="/create-event"><PlusCircle className="mr-2 h-4 w-4" />Create Event</Link>
                   </DropdownMenuItem>
