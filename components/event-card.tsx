@@ -19,10 +19,10 @@ export function EventCard({ event }: { event: CommunityEvent }) {
         />
       <Badge className="absolute left-3 top-3">{event.eventType}</Badge>
             {event.hasPassed && (
-         <Badge variant="secondary" className="absolute right-3 top-3">
-                     Ended
-        </Badge>
-                                        )}
+  <Badge variant="outline" className="absolute right-3 top-3 bg-background/90 text-foreground backdrop-blur">
+    Ended
+  </Badge>
+)}
       </div>
 
       <CardContent className="flex flex-1 flex-col gap-3 p-5">

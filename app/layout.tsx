@@ -21,7 +21,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${geistSans.variable} ${geistMono.variable} min-h-screen antialiased`}>
+      <body className={`${geistSans.className} ${geistSans.variable} ${geistMono.variable} min-h-screen antialiased`}>
 <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
   <Suspense fallback={<NavbarFallback />}>
     <Navbar />
